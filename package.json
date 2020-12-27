@@ -1,0 +1,28 @@
+{
+  "name": "datastore",
+  "version": "1.0.0",
+  "description": "A file based key-value datastore ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdarshKaradi9/DataStore_FreshWorks.git"
+  },
+  "author": "Adarsh Karadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdarshKaradi9/DataStore_FreshWorks/issues"
+  },
+  "homepage": "https://github.com/AdarshKaradi9/DataStore_FreshWorks#readme",
+  "dependencies": {
+    "config": "^3.3.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

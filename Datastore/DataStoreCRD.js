@@ -1,8 +1,11 @@
 const { json } = require("body-parser");
 
- export default class DataStoreCRD {
+class DataStoreCRD {
     getTest() {
-        return json({msg: "this is the message"});
+        var obj = { msg: "this is the message" }
+        return obj
     }
 }
+
+module.exports =  { DataStoreCRD: DataStoreCRD } 
 
