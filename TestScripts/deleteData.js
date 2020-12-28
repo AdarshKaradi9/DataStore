@@ -8,21 +8,16 @@ const rawenv = fs.readFileSync('../config/configurations.json');
 const env = JSON.parse(rawenv);
 var filePath = env.CUSTOM_FILE_PATH ? env.CUSTOM_FILE_PATH : env.DEFAULT_FILE_PATH
 var fileName = env.CUSTOM_FILE_NAME ? env.CUSTOM_FILE_NAME : env.DEFAULT_FILE_NAME
-filePath = path.resolve(__dirname,filePath);
+filePath = path.resolve(__dirname,filePath,'..');
 
 const fileFullPath = path.resolve(filePath, fileName);
 
-if (!fs.existsSync(filePath)) {
-    console.log("Please provide a valid file path");
+if (!fs.existsSync(fileFullPath)) {
+    console.log("The file does not exists");
     return;
 }
 
-if (!fs.existsSync(fileFullPath)) {
-    fs.writeFileSync(fileFullPath, "{}");
-    console.log("File named " + fileName + " created");
-}
-
-const key = "Key1";
+const key = "Key3";
 const result = DataStoreCRD.deleteData(key, fileFullPath);
 
 console.log("key : " + key)
