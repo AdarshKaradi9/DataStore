@@ -5,39 +5,42 @@ const path = require('path');
 
 const app = express();
 
+// import the DataStoreCRD library
 const { DataStoreCRD } = require('./Datastore/DataStoreCRD');
 const DataStore = new DataStoreCRD();
 
 const rawenv = fs.readFileSync('./config/configurations.json');
 const env = JSON.parse(rawenv);
-const dbPath = path.resolve(__dirname,env.DEFAULT_DB_PATH);
-const dbName = env.DEFAULT_DB_NAME
-const dbFullPath = path.resolve(dbPath, dbName);
+var filePath = env.CUSTOM_FILE_PATH ? env.CUSTOM_FILE_PATH : env.DEFAULT_FILE_PATH
+filePath = path.resolve(__dirname,filePath);
+var fileName = env.CUSTOM_FILE_NAME ? env.CUSTOM_FILE_NAME : env.DEFAULT_FILE_NAME
+const fileFullPath = path.resolve(filePath, fileName);
+
+if (!fs.existsSync(filePath)) {
+    console.log("Please provide a valid file path");
+    return;
+}
+
+if (!fs.existsSync(fileFullPath)) {
+    fs.writeFileSync(fileFullPath, "{}");
+    console.log("Please provide a valid file path")
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => { res.send('This is home page') });
+app.get('/', (req, res) => { res.send('Available routes:\n/read : reads the data from the datastore for the provided key\n/create : stores the provided data in the datastore\n/delete : deletes the data from the datastore for the provided key') });
 
-app.get('/read', (req, res) => { 
-    console.log(req.params);
-    result = DataStore.readData("Key1", dbFullPath);
-    res.send(result);
-});
+// read route for reading the data for the provided key
+app.get('/datastore/read', (req, res) => { res.send(DataStore.readData(req.query.key, fileFullPath)) });
 
-app.post('/create', (req, res) => { 
-const DataStore = new DataStoreCRD();
-    result = DataStore.createData(req.body, dbFullPath);
-    res.send(JSON.stringify(result));
-});
+// create route for storing the data into the datastore
+app.post('/datastore/create', (req, res) => { res.send(DataStore.createData(req.body, fileFullPath)) });
 
-app.delete('/delete', (req, res) => { 
-    result = DataStore.deleteData("Key2", dbFullPath);
-    res.send(result);
-
-})
+// delete route for deleting the data for the provided key
+app.delete('/datastore/delete', (req, res) => { res.send(DataStore.deleteData(req.query.key, fileFullPath)) })
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-    console.log(`Server started at port ${PORT}!!`);
+    console.log(`Server started at port ${PORT}`);
 })

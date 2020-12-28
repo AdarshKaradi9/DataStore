@@ -1,4 +1,7 @@
 {
-    "DEFAULT_DB_PATH": "localDB",
-    "DEFAULT_DB_NAME": "db.json"
+    "DEFAULT_FILE_PATH": "",
+    "DEFAULT_FILE_NAME": "file.json",
+    "CUSTOM_FILE_PATH": "",
+    "CUSTOM_FILE_NAME": ""
+
 }

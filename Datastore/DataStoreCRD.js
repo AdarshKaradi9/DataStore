@@ -1,7 +1,7 @@
 const fs = require('fs');
 class DataStoreCRD {
     addFields(jsonData) {
-        // adding the data created time and time to live to the data
+        // adding the data 'Created-Time' and 'Time-To-Live' fields to the data
         jsonData['Created-Time'] = this.getCurrentTime();
         jsonData['Time-To-Live'] = jsonData['Time-To-Live'] ? jsonData['Time-To-Live'] : null
         return jsonData
@@ -25,7 +25,7 @@ class DataStoreCRD {
 
             // calculating the time difference between the time of creation of the data and current time 
             var diff = Math.abs(currentTime - dataCreatedTime)/1000 
-
+            
             // check if the difference exceeds time to live value of the data if exceeds then data is expired 
             if(diff > timeToLive) {
                 return true
@@ -35,7 +35,7 @@ class DataStoreCRD {
         return false
     }
 
-    createData(jsonData, dbPath) {
+    createData(jsonData, filePath) {
         try {
             // check if the json data is larger than 1GB 
             if(JSON.stringify(jsonData) > 1000000000) {
@@ -56,26 +56,32 @@ class DataStoreCRD {
                 }
             }
 
-            if (!fs.existsSync(dbPath)) {
+            if (!fs.existsSync(filePath)) {
                 return { status: 'Datastore does not exists. Data not found for the key.' }
             }
-            // Synchronously reads the entire contents of a datastore.
-            const db = fs.readFileSync(dbPath);
-            const dbParsed = JSON.parse(db);
+            // synchronously read the entire contents of a datastore.
+            const file = fs.readFileSync(filePath);
+            const fileParsed = JSON.parse(file);
             
             // check if existing datastore's size exceeds 1000000000 that is 10^9)
-            if(JSON.stringify(dbParsed).length > 1000000000) {
+            if(JSON.stringify(fileParsed).length > 1000000000) {
                 return { status: 'Datastore file exceeds 1GB of size'}
+            }
+
+            for (const [key] of Object.entries(jsonData)) {
+                if(fileParsed[key]) {
+                    return {status: 'Key already exists in the datastore.'}
+                }
             }
 
             // add the extra fields to each data values
             for (const [key] of Object.entries(jsonData)) {
                 jsonData[key] = this.addFields(jsonData[key]);
-                dbParsed[key]=jsonData[key];
+                fileParsed[key]=jsonData[key];
             }
 
-            // write the new data to the existing datastore
-            fs.writeFileSync(dbPath, JSON.stringify(dbParsed, null, 4)); 
+            // synchronously write the modified datastore to the existing datastore
+            fs.writeFileSync(filePath, JSON.stringify(fileParsed, null, 4)); 
             
             return {status: "Data successully added to the datastore."};
         } catch (error) {
@@ -83,50 +89,72 @@ class DataStoreCRD {
         }   
     }
 
-    checkData(key, dbPath) {
-        // check if datastore exists or not
-        if (!fs.existsSync(dbPath)) {
-            return { status: 'Datastore does not exists. Data not found for the key.' }
+    checkData(key, filePath) {
+        try {
+            // check if datastore exists or not
+            if (!fs.existsSync(filePath)) {
+                return { status: 'Datastore does not exists. Data not found for the key.' }
+            }
+            // get the datastore
+            const file = fs.readFileSync(filePath);
+            const fileParsed = JSON.parse(file)
+
+            // check if the provided key exists
+            if(!fileParsed[key]) {
+                return { status: "Data not found for the provided key."}
+            }
+
+            // check if the data is expired 
+            const data = fileParsed[key];
+            if(this.checkTimeToLive(data)) {
+                return { status: "Cannot perfom the operation as the Time-To-Live for the key has expired."}
+            }
+
+            return {status: "success" ,file: fileParsed};
+        } catch (error) {
+            console.error(error.message);
+            return {status: error.message}
         }
-        // get the datastore
-        const db = fs.readFileSync(dbPath);
-        const dbParsed = JSON.parse(db)
-
-        // check if the provided key exists
-        if(!dbParsed[key]) {
-            return { status: "Data not found for the provided key."}
-        }
-
-        // check if the data is expired 
-        const data = dbParsed[key];
-        if(this.checkTimeToLive(data)) {
-            return { status: "Cannot read the data as the Time-To-Live for the key has expired."}
-        }
-
-        return {status: "success" ,db: dbParsed};
-
     }
 
-    readData(key, dbPath) {
-        const response = this.checkData(key, dbPath);
-        if(response.status !== "success") {
-            return { status: response.status }
+    readData(key, filePath) {
+        try {
+            const response = this.checkData(key, filePath);
+            if(response.status !== "success") {
+                return { status: response.status }
+            }
+            
+            // return the data for the provided key
+            return response.file[key];
+        } catch (error) {
+            console.error(error.message);
+            return {status: error.message}
         }
         
-        return response.db[key];
     }
 
-    deleteData(key, dbPath) {
-        const response = this.checkData(key, dbPath);
-        if(!response.status == "success") {
-            return { status: response.status }
+    deleteData(key, filePath) {
+        try {
+            const response = this.checkData(key, filePath);
+            if(response.status !== "success") {
+                return { status: response.status }
+            }
+
+            // get the datastore
+            const fileParsed = response.file;
+
+            // delete the data for the provided key.
+            delete fileParsed[key];
+
+            // synchronously write the modified datastore to the datastore.
+            fs.writeFileSync(filePath, JSON.stringify(fileParsed, null, 4)); 
+            return { status: "Data deleted successfully from the datastore."}
+        } catch (error) {
+            console.error(error.message);
+            return {status: error.message}
         }
-        const dbParsed = response.dbParsed;
-        delete dbParsed[key];
-        fs.writeFileSync(dbPath, JSON.stringify(dbParsed, null, 4)); 
-        return { status: "Data deleted from the datastore."}
     }
 }
 
+// export the class as library to import from different location
 module.exports =  { DataStoreCRD: DataStoreCRD } 
-

@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "5d6b7e74-8d37-44ff-9df3-8106c5351dbe",
+		"name": "DataStoreCRD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Key1\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data3\",\n        \"Time-To-Live\": 300\n    },\n    \"Key2\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data2\"\n    },\n    \"Key3\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data2\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/datastore/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"datastore",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read key",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "abc",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Key1\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data3\",\n        \"Time-To-Live\": 300\n    },\n    \"Key2\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data2\"\n    },\n    \"Key3\" :{\n        \"field1\": \"data1\",\n        \"field2\": \"data2\",\n        \"field3\": \"data2\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/datastore/read?key=Key1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"datastore",
+						"read"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "Key1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete key",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/datastore/delete?key=Key2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"datastore",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "Key2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
