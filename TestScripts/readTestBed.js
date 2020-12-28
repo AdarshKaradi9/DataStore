@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-
 // import the DataStoreCRD library
 const DataStoreCRD = require('../Datastore/DataStoreCRD');
 
@@ -23,7 +22,7 @@ if (!fs.existsSync(fileFullPath)) {
     console.log("File named " + fileName + " created");
 }
 
-const key = "Key1";
+const key = "Key2";
 const result = DataStoreCRD.readData(key, fileFullPath);
 
 console.log("Result for the key " + key + " is:");
