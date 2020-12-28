@@ -19,8 +19,12 @@
   "homepage": "https://github.com/AdarshKaradi9/DataStore_FreshWorks#readme",
   "dependencies": {
     "config": "^3.3.3",
+    "date-and-time": "^0.14.2",
+    "date-time": "^3.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.9.0"
+    "express-validator": "^6.9.0",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
