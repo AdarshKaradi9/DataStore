@@ -17,7 +17,10 @@ Usage:
 5. (OPTIONAL) If you want your own file name then change the value of "CUSTOM_FILE_NAME" to required file(datastore) name.
 6. Two ways to test:
     1. Testing with Postman: 
-        1. Using 'npm start' it will start the server.js file which will by default listen at port 3000. The file server.js is the REST API developed using Express.js in Nodejs. (OPTIONAL) If you want to change the port then change the value of "PORT" to required port number in config/configuration.json. To test it using Postman you can import DataStoreCRD.postman_collection.json into Postman application and carry out the operations such as read data, delete data, create data.
-    2. Testing with scripts: Change the directory to TestScripts and run the createData.js, readData.js or deleteData.js to test using scripts.
+        1. Using 'npm start' it will start the server.js file which will by default listen at port 3000. The file server.js is the REST API developed using Express.js in Nodejs. 
+        2. (OPTIONAL) If you want to change the port then change the value of "PORT" to required port number in config/configuration.json.
+        3. To test it using Postman you can import DataStoreCRD.postman_collection.json into Postman application and carry out the operations such as read data, delete data, create data.
+    2. Testing with scripts:
+        1.Change the directory to TestScripts and run the createData.js, readData.js or deleteData.js to test using scripts.
 
 
