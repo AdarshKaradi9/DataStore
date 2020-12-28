@@ -40,7 +40,7 @@ app.post('/datastore/create', (req, res) => { res.send(DataStoreCRD.createData(r
 // delete route for deleting the data for the provided key
 app.delete('/datastore/delete', (req, res) => { res.send(DataStoreCRD.deleteData(req.query.key, fileFullPath)) })
 
-const PORT = process.env.PORT || 3000
+const PORT = env.PORT
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
 })

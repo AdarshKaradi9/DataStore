@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Create keys",
+			"name": "Create Data",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -35,7 +35,7 @@
 			"response": []
 		},
 		{
-			"name": "Read key",
+			"name": "Read Data",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -80,7 +80,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete key",
+			"name": "Delete Data",
 			"request": {
 				"method": "DELETE",
 				"header": [],
