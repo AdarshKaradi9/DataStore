@@ -11,7 +11,7 @@ Installation:
 
 Usage:
 1. Open the configuration.json file present in config directory
-2. The default file(datastore) path is set to current_path/DataStore_FreshWorks/TestScripts. 
+2. The default file(datastore) path is set to ~/DataStore_FreshWorks/TestScripts. 
 3. (OPTIONAL) If you want your own file path then change the value of "CUSTOM_FILE_PATH" to required file(datastore) path.
 4. The default name of the file is "file.json".
 5. (OPTIONAL) If you want your own file name then change the value of "CUSTOM_FILE_NAME" to required file(datastore) name.
