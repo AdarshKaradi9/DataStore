@@ -10,12 +10,13 @@ Installation:
 4. The installation is done
 
 Usage:
-1. The configuration.json file present in config directory is the file that contains environment variables
-2. The default file(datastore) path is set to ~/DataStore_FreshWorks/. 
-3. (OPTIONAL) If you want your own file path then change the value of "CUSTOM_FILE_PATH" to required file(datastore) path.
-4. The default name of the file or the datastore is "file.json".
-5. (OPTIONAL) If you want your own file name then change the value of "CUSTOM_FILE_NAME" to required file(datastore) name.
-6. Two ways to test:
+1. The configuration.json file present in config directory is the file that contains environment variables.
+2. The DataStoreCRD library is present at Datastore directory and can be imported anywhere.
+3. The default file(datastore) path is set to ~/DataStore_FreshWorks/. 
+4. (OPTIONAL) If you want your own file path then change the value of "CUSTOM_FILE_PATH" to required file(datastore) path.
+5. The default name of the file or the datastore is "file.json".
+6. (OPTIONAL) If you want your own file name then change the value of "CUSTOM_FILE_NAME" to required file(datastore) name.
+7. Two ways to test:
     1. Testing with Postman: 
         1. Using 'npm start' it will start the server.js file which will by default listen at port 3000. The file server.js is the REST API developed using Express.js in Nodejs. 
         2. (OPTIONAL) If you want to change the port then change the value of "PORT" to required port number in config/configuration.json.
