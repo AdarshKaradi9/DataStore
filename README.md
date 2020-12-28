@@ -22,6 +22,6 @@ Usage:
         2. (OPTIONAL) If you want to change the port then change the value of "PORT" to required port number in config/configuration.json.
         3. To test it using Postman you can import DataStoreCRD.postman_collection.json into Postman application and carry out the operations such as read data, delete data, create data.
     2. Testing with scripts:
-        1. Change the directory to TestScripts and run the scripts createData.js, readData.js or deleteData.js to test.
+        1. Change the directory to TestScripts and run the scripts usin node createData.js,node readData.js or node deleteData.js to test.
 
 
