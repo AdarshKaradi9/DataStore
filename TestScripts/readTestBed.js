@@ -23,7 +23,7 @@ if (!fs.existsSync(fileFullPath)) {
     console.log("File named " + fileName + " created");
 }
 
-const key = "Key2";
+const key = "Key1";
 const result = DataStoreCRD.readData(key, fileFullPath);
 
 console.log("Result for the key " + key + " is:");
