@@ -3,11 +3,11 @@ DATASTORE_FRESHWORKS
 Description: 
 A file-based key-value data store that supports the basic CRD(create, read and delete) operations. The application is written in Nodejs .
 
-Installation:
+Environment setup:
 1. Clone the repository using 'git clone https://github.com/AdarshKaradi9/DataStore_FreshWorks.git'
 2. Change the director to DataStore_FreshWorks using command 'cd DataStore_FreshWorks/'
 3. Install all the necessary node modules using command 'npm install' in the DataStore_FreshWorks directory
-4. The installation is done
+4. The environment is set.
 
 Usage:
 1. The configuration.json file present in config directory is the file that contains environment variables.
