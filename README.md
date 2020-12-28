@@ -10,7 +10,7 @@ Installation:
 4. The installation is done
 
 Usage:
-1. Open the configuration.json file present in config directory
+1. The configuration.json file present in config directory is the file that contains environment variables
 2. The default file(datastore) path is set to ~/DataStore_FreshWorks/. 
 3. (OPTIONAL) If you want your own file path then change the value of "CUSTOM_FILE_PATH" to required file(datastore) path.
 4. The default name of the file or the datastore is "file.json".
