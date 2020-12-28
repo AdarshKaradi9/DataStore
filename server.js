@@ -17,14 +17,16 @@ filePath = path.resolve(__dirname,filePath);
 const fileFullPath = path.resolve(filePath ,fileName);
 
 if (!fs.existsSync(filePath)) {
-    console.log("Please provide a valid file path");
+    console.log('Please provide a valid file path');
     return;
 }
 
 if (!fs.existsSync(fileFullPath)) {
-    fs.writeFileSync(fileFullPath, "{}");
-    console.log("File named " + fileName + " created")
+    fs.writeFileSync(fileFullPath, '{}');
+    console.log('File named ' + fileName + ' created')
 }
+
+console.log("Datastore has been created at ",fileFullPath);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

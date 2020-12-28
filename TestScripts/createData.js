@@ -8,7 +8,7 @@ const rawenv = fs.readFileSync('../config/configurations.json');
 const env = JSON.parse(rawenv);
 var filePath = env.CUSTOM_FILE_PATH ? env.CUSTOM_FILE_PATH : env.DEFAULT_FILE_PATH
 var fileName = env.CUSTOM_FILE_NAME ? env.CUSTOM_FILE_NAME : env.DEFAULT_FILE_NAME
-filePath = path.resolve(__dirname,filePath, '..');
+filePath = path.resolve(__dirname,filePath);
 
 const fileFullPath = path.resolve(filePath, fileName);
 
@@ -41,5 +41,11 @@ const data = {
     }
 }
 
-const result = DataStoreCRD.createData(data, fileFullPath);
-console.log(result)
+console.log('Datastore path:', fileFullPath);
+console.log('response:')
+const response = DataStoreCRD.createData(data, fileFullPath);
+if(response.status == 'failed') {
+    console.log(response);
+    return;
+}
+console.log(response)

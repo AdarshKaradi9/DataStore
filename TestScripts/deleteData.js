@@ -8,7 +8,7 @@ const rawenv = fs.readFileSync('../config/configurations.json');
 const env = JSON.parse(rawenv);
 var filePath = env.CUSTOM_FILE_PATH ? env.CUSTOM_FILE_PATH : env.DEFAULT_FILE_PATH
 var fileName = env.CUSTOM_FILE_NAME ? env.CUSTOM_FILE_NAME : env.DEFAULT_FILE_NAME
-filePath = path.resolve(__dirname,filePath,'..');
+filePath = path.resolve(__dirname,filePath);
 
 const fileFullPath = path.resolve(filePath, fileName);
 
@@ -17,8 +17,13 @@ if (!fs.existsSync(fileFullPath)) {
     return;
 }
 
-const key = "Key3";
-const result = DataStoreCRD.deleteData(key, fileFullPath);
+console.log('Datastore path:', fileFullPath);
+console.log('response:');
 
-console.log("key : " + key)
-console.log(result);
+const key = "Key3";
+const response = DataStoreCRD.deleteData(key, fileFullPath);
+if(response.status == 'failed') {
+    console.log(response);
+    return;
+}
+console.log(response);
