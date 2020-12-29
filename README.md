@@ -23,6 +23,6 @@ Usage:
         3. To test it using Postman you can import DataStoreCRD.postman_collection.json into Postman application and carry out the operations such as read data, delete data, create data.
     2. Testing with scripts:
         1. Change the directory to TestScripts and run the scripts using 'node createData.js','node readData.js' or 'node deleteData.js' to test.
-        2. Begin with 'node createData.js'. This will create the file(datastore) in the specified location and then you can run 'node readData.js' or 'node deleteData.js'.
+        2. Begin with 'node createData.js'. This will create the file(datastore) in the specified file path and then you can run 'node readData.js' or 'node deleteData.js' by editing these scripts if needed.
 
 
