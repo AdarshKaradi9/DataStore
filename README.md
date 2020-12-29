@@ -21,10 +21,10 @@ A **file-based key-value** data store that supports the basic CRD(create, read a
         1. Using **npm start** it will start the **server.js** file which will by default listen at port 3000. The file server.js is the REST API developed using Express.js in **Nodejs**. 
         2. (OPTIONAL) If you want to change the port then change the value of **PORT** to required port number in **config/configuration.json**.
         3. To test it using Postman you can import **DataStoreCRD.postman_collection.json** into Postman application and carry out the operations such as read data, delete data, create data.
-        4. The default path for the file is **~/DataStore/**.
+        4. The default path for the file is **~/DataStore/file.json**.
     2. Testing with **scripts**:
         1. Change the directory to TestScripts and run the scripts using **node createData.js**,**node readData.js** or **node deleteData.js** to test.
         2. Begin with **node createData.js**. This will create the file(datastore) in the specified file path and then you can run **node readData.js** or **node deleteData.js** by editing these scripts if needed.
-        3. 4. The default path for the file is **~/DataStore/TestScripts**.
+        3. 4. The default path for the file is **~/DataStore/TestScripts/file.json**.
 
 
