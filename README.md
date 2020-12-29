@@ -1,7 +1,7 @@
 # DATASTORE_FRESHWORKS
 
 ## Description: 
-A file-based key-value data store that supports the basic CRD(create, read and delete) operations. The application is written in Nodejs. 
+A **file-based key-value** data store that supports the basic CRD(create, read and delete) operations. The application is written in **Nodejs**. 
 
 ## Environment setup:
 1. Clone the repository using **git clone https://github.com/AdarshKaradi9/DataStore_FreshWorks.git**.
