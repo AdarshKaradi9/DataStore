@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 // import the DataStoreCRD library
-const DataStoreCRD = require('./Datastore/DataStoreCRD');
+const DataStoreCRD = require('./DatastoreModule/DataStoreCRD');
 
 const rawenv = fs.readFileSync('./config/configurations.json');
 const env = JSON.parse(rawenv);

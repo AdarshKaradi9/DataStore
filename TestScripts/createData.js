@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // import the DataStoreCRD library
-const DataStoreCRD = require('../Datastore/DataStoreCRD');
+const DataStoreCRD = require('../DatastoreModule/DataStoreCRD');
 
 const rawenv = fs.readFileSync('../config/configurations.json');
 const env = JSON.parse(rawenv);
@@ -32,7 +32,8 @@ const data = {
     "Key2" :{
         "field1": "data1",
         "field2": "data2",
-        "field3": "data2"
+        "field3": "data2",
+        "Time-To-Live": 1
     },
     "Key3" :{
         "field1": "data1",

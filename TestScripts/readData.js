@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // import the DataStoreCRD library
-const DataStoreCRD = require('../Datastore/DataStoreCRD');
+const DataStoreCRD = require('../DatastoreModule/DataStoreCRD');
 
 const rawenv = fs.readFileSync('../config/configurations.json');
 const env = JSON.parse(rawenv);
@@ -19,7 +19,7 @@ if (!fs.existsSync(fileFullPath)) {
 console.log('Datastore path:', fileFullPath);
 console.log('response:');
 
-const key = "Key2";
+const key = "Key1";
 const response = DataStoreCRD.readData(key, fileFullPath);
 if(response.status == 'failed') {
     console.log(response);
