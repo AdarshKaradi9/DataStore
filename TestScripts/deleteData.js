@@ -13,7 +13,7 @@ filePath = path.resolve(__dirname,filePath);
 const fileFullPath = path.resolve(filePath, fileName);
 
 if (!fs.existsSync(fileFullPath)) {
-    console.log("The file does not exists");
+    console.log("The datastore file does not exists");
     return;
 }
 
