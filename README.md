@@ -4,8 +4,8 @@
 A **file-based key-value** data store that supports the basic CRD(create, read and delete) operations. The application is written in **Nodejs**. 
 
 ## Environment setup:
-1. Clone the repository using **git clone https://github.com/AdarshKaradi9/DataStore.git**.
-2. Change the director to DataStore using command **cd DataStore/**.
+1. Clone the repository using **git clone https://github.com/AdarshKaradi9/DataStore.git**
+2. Change the director to DataStore using command **cd DataStore/**
 3. Install all the necessary node modules using command **npm install** in the DataStore directory
 4. The environment is set.
 
