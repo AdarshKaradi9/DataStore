@@ -17,7 +17,7 @@ filePath = path.resolve(__dirname,filePath);
 const fileFullPath = path.resolve(filePath ,fileName);
 
 if (!fs.existsSync(filePath)) {
-    console.log('Please provide a valid file path');
+    console.log('Please provide a valid custom file path in config/configuration.json');
     return;
 }
 
@@ -26,7 +26,7 @@ if (!fs.existsSync(fileFullPath)) {
     console.log('File named ' + fileName + ' created')
 }
 
-console.log("Datastore has been created at ",fileFullPath);
+console.log("Datastore path: ",fileFullPath);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
