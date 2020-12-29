@@ -5,14 +5,14 @@ A **file-based key-value** data store that supports the basic CRD(create, read a
 
 ## Environment setup:
 1. Clone the repository using **git clone https://github.com/AdarshKaradi9/DataStore.git**.
-2. Change the director to DataStore_FreshWorks using command **cd DataStore_FreshWorks/**.
-3. Install all the necessary node modules using command **npm install** in the DataStore_FreshWorks directory
+2. Change the director to DataStore using command **cd DataStore/**.
+3. Install all the necessary node modules using command **npm install** in the DataStore directory
 4. The environment is set.
 
 ## Usage:
 1. The **configuration.json** file present in config directory is the file that contains environment variables.
 2. The **DataStoreCRD** library is present at Datastore directory and can be imported anywhere.
-3. The default file(datastore) path is set to **~/DataStore_FreshWorks/**. 
+3. The default file(datastore) path is set to **~/DataStore/**. 
 4. (OPTIONAL) If you want your own file path then change the value of **CUSTOM_FILE_PATH** to required file(datastore) path.
 5. The default name of the file or the datastore is **file.json**.
 6. (OPTIONAL) If you want your own file name then change the value of **CUSTOM_FILE_NAME** to required file(datastore) name.
